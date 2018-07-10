@@ -1,5 +1,6 @@
 package com.amyhuyen.instagram;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
@@ -49,6 +50,12 @@ public class MainActivity extends AppCompatActivity {
             public void done(ParseUser user, ParseException e) {
                 if (e == null){
                     Log.d("LogInActivity", "Login successful!");
+
+                    // go to home activity after successful login
+                    final Intent intent = new Intent(MainActivity.this, HomeActivity.class);
+                    startActivity(intent);
+                    finish();
+
                 } else {
                     Log.e("LogInActivity", "Login failure.");
                     e.printStackTrace();
