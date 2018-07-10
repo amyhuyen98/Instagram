@@ -20,7 +20,7 @@ import java.util.List;
 public class HomeActivity extends AppCompatActivity {
 
     // the views
-    private static final String imagePath = "/sdcard/DCIM/Camera/20180709_154859.jpg";
+    private static final String imagePath = "/Internal storage/DCIM/Camera/20180709_154859.jpg";
     private EditText etDescription;
     private Button btnCreate;
     private Button btnRefresh;
