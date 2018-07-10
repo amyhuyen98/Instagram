@@ -28,6 +28,7 @@ public class MainActivity extends AppCompatActivity {
         etPassword = findViewById(R.id.etPassword);
         btnLogin = findViewById(R.id.btnLogin);
 
+        // set on click listener for login button
         btnLogin.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v){

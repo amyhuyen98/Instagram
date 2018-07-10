@@ -11,8 +11,13 @@
         android:id="@+id/tilUsername"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_margin="16dp">
-         <EditText
+        android:layout_marginRight="16dp"
+        android:layout_marginLeft="16dp"
+        android:layout_marginBottom="16dp"
+        android:layout_marginTop="115dp"
+        android:layout_alignTop="@id/ivInstagram">
+
+        <EditText
             android:id="@+id/etUsername"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -24,8 +29,6 @@
         android:id="@+id/tilPassword"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        app:passwordToggleEnabled="true"
-        android:layout_marginRight="16dp"
         android:layout_marginLeft="16dp"
         android:layout_below="@id/tilUsername">
         <EditText
@@ -46,5 +49,14 @@
         android:layout_marginTop="16dp"
         android:text="Log In"
         android:layout_below="@id/tilPassword"/>
+
+    <ImageView
+        android:id="@+id/ivInstagram"
+        android:layout_width="181dp"
+        android:layout_height="172dp"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="47dp"
+        app:srcCompat="@drawable/instagram" />
 
 </RelativeLayout>
