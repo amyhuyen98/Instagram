@@ -52,7 +52,7 @@ public class HomeActivity extends AppCompatActivity {
         // on click listener for refresh button
         btnRefresh.setOnClickListener(new View.OnClickListener(){
             @Override
-            public void onClick(View v){
+            public void onClick(View v) {
                 loadTopPosts();
             }
         });

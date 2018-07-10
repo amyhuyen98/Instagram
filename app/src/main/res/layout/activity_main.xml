@@ -30,6 +30,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginLeft="16dp"
+        app:passwordToggleEnabled="true"
         android:layout_marginRight="16dp"
         android:layout_below="@id/tilUsername">
         <EditText
@@ -49,7 +50,7 @@
         android:layout_marginRight="10dp"
         android:layout_marginTop="16dp"
         android:text="Log In"
-        android:textColor="@color/grey"
+        android:textColor="@color/body_text"
         android:background="@drawable/btn_border"
         android:layout_below="@id/tilPassword"/>
 
@@ -60,6 +61,6 @@
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="47dp"
-        app:srcCompat="@drawable/instagram" />
+        app:srcCompat="@drawable/instagram"/>
 
 </RelativeLayout>
