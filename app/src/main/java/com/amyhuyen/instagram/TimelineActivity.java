@@ -10,7 +10,6 @@ import android.util.Log;
 import com.amyhuyen.instagram.model.Post;
 import com.parse.FindCallback;
 import com.parse.ParseException;
-import com.parse.ParseQuery;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -25,7 +24,6 @@ public class TimelineActivity extends AppCompatActivity {
     List<Post> posts;
     List<Post> newPosts;
     PostAdapter postAdapter;
-    private static final int QUERY_LIMIT = 20;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -63,8 +61,9 @@ public class TimelineActivity extends AppCompatActivity {
 
     public void getPosts(){
         // define the class to query
-        ParseQuery<Post> query = ParseQuery.getQuery(Post.class);
-        query.setLimit(QUERY_LIMIT);
+//        ParseQuery<Post> query = ParseQuery.getQuery(Post.class).include("user");
+        Post.Query query = new Post.Query();
+        query.getTop().withUser();
         // Execute the find asynchronously
         query.findInBackground(new FindCallback<Post>() {
             public void done(List<Post> itemList, ParseException e) {

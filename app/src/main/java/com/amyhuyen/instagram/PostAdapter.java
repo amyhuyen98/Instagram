@@ -10,6 +10,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.amyhuyen.instagram.model.Post;
+import com.codepath.apps.restclienttemplate.models.GlideApp;
 
 import java.util.List;
 
@@ -45,9 +46,15 @@ public class PostAdapter extends RecyclerView.Adapter<PostAdapter.ViewHolder>{
         final Post post = mPosts.get(position);
         // populate the views according to this data
         holder.tvCaption.setText(post.getDescription());
-//        holder.tvHandle.setText(post.getUser().getString("handle"));
+        holder.tvHandle.setText(post.getHandle());
 
-        //TODO - load images here into imageviews!!
+        // getting and displaying images
+        if (post.getImage() != null) {
+            String url = post.getImage().getUrl();
+            GlideApp.with(context)
+                    .load(url)
+                    .into(holder.ivImage);
+        }
 
     }
 
