@@ -61,18 +61,21 @@ public class TimelineActivity extends AppCompatActivity {
 
     public void getPosts(){
         // define the class to query
-//        ParseQuery<Post> query = ParseQuery.getQuery(Post.class).include("user");
         Post.Query query = new Post.Query();
         query.getTop().withUser();
+
+        //
+
+
         // Execute the find asynchronously
         query.findInBackground(new FindCallback<Post>() {
             public void done(List<Post> itemList, ParseException e) {
                 if (e == null) {
+                    newPosts.clear();
                     newPosts.addAll(itemList);
                     postAdapter.clear();
                     postAdapter.addAll(newPosts);
                     swipeContainer.setRefreshing(false);
-
                 } else {
                     Log.d("item", "Error: " + e.getMessage());
                 }

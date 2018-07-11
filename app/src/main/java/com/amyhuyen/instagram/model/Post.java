@@ -38,7 +38,7 @@ public class Post extends ParseObject {
         put(KEY_USER, user);
     }
 
-    // acccessor for handle
+    // accessor for handle
     public String getHandle(){
         return getUser().getString(KEY_HANDLE);
     }
