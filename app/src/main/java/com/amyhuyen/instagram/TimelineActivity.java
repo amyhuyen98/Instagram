@@ -64,9 +64,6 @@ public class TimelineActivity extends AppCompatActivity {
         Post.Query query = new Post.Query();
         query.getTop().withUser();
 
-        //
-
-
         // Execute the find asynchronously
         query.findInBackground(new FindCallback<Post>() {
             public void done(List<Post> itemList, ParseException e) {
