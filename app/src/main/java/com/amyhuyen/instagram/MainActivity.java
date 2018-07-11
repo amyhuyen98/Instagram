@@ -4,55 +4,48 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
-import android.view.View;
-import android.widget.Button;
 import android.widget.EditText;
 
 import com.parse.LogInCallback;
 import com.parse.ParseException;
 import com.parse.ParseUser;
 
+import butterknife.BindView;
+import butterknife.ButterKnife;
+import butterknife.OnClick;
+
 public class MainActivity extends AppCompatActivity {
 
     // the views in our login screen
-    private EditText etUsername;
-    private EditText etPassword;
-    private Button btnLogin;
-    private Button btnSignUp;
+    public @BindView (R.id.etUsername)EditText etUsername;
+    public @BindView (R.id.etPassword)EditText etPassword;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        etUsername = findViewById(R.id.etUsername);
-        etPassword = findViewById(R.id.etPassword);
-        btnLogin = findViewById(R.id.btnLogin);
-        btnSignUp = findViewById(R.id.btnSignUp);
-
-        // set on click listener for login button
-        btnLogin.setOnClickListener(new View.OnClickListener(){
-            @Override
-            public void onClick(View v){
-                // access username and password input
-                final String username = etUsername.getText().toString();
-                final String password = etPassword.getText().toString();
-
-                // login use username and password
-                login(username, password);
-
-            }
-        });
-
-        // set on click listener for signup button
-        btnSignUp.setOnClickListener(new View.OnClickListener(){
-            @Override
-            public void onClick(View v){
-                signUp();
-            }
-        });
-
+        // bind the views using butterknife
+        ButterKnife.bind(this);
     }
+
+    // on click for login button using butterknife
+    @OnClick(R.id.btnLogin)
+    public void onLoginClick(){
+        // access username and password input
+        final String username = etUsername.getText().toString();
+        final String password = etPassword.getText().toString();
+
+        // login use username and password
+        login(username, password);
+    }
+
+    // on click for signup button using butterknife
+    @OnClick(R.id.btnSignUp)
+    public void onSignUpClickMain(){
+        signUp();
+    }
+
 
     // method that logs a user in
     private void login(String username, String password){

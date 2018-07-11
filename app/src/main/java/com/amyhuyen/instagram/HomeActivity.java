@@ -10,8 +10,6 @@ import android.provider.MediaStore;
 import android.support.v4.content.FileProvider;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
-import android.view.View;
-import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.Toast;
@@ -29,20 +27,16 @@ import java.util.List;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
+import butterknife.OnClick;
 
 public class HomeActivity extends AppCompatActivity {
 
     static final int REQUEST_IMAGE_CAPTURE = 1;
-    public final String APP_TAG = "InstaApp";
-    public String photoFileName = "photo.jpg";
     private static final String AUTHORITY = "com.amyhuyen.instagram";
     private File photoFile;
 
     // the views
     public @BindView (R.id.etDescription) EditText etDescription;
-    public @BindView (R.id.btnCreate) Button btnCreate;
-    public @BindView (R.id.btnRefresh) Button btnRefresh;
-    public @BindView (R.id.btnPicture) Button btnPicture;
     public @BindView (R.id.ivPhoto) ImageView ivPhoto;
 
     @Override
@@ -52,45 +46,6 @@ public class HomeActivity extends AppCompatActivity {
 
         // bind the views using butterknife
         ButterKnife.bind(this);
-
-        // on click listener for create button
-        btnCreate.setOnClickListener(new View.OnClickListener(){
-            @Override
-            public void onClick(View v){
-                final String description = etDescription.getText().toString();
-                final ParseUser user = ParseUser.getCurrentUser();
-
-                final ParseFile parseFile = new ParseFile(photoFile);
-                parseFile.saveInBackground(new SaveCallback(){
-                    @Override
-                    public void done(ParseException e){
-                        createPost(description, parseFile, user);
-                    }
-                });
-            }
-        });
-
-        // on click listener for refresh button
-        btnRefresh.setOnClickListener(new View.OnClickListener(){
-            @Override
-            public void onClick(View v){
-                loadTopPosts();
-            }
-        });
-
-        // on click listener for capture image button
-        btnPicture.setOnClickListener(new View.OnClickListener(){
-            @Override
-            public void onClick(View v){
-                File directory = getExternalFilesDir(Environment.DIRECTORY_PICTURES);
-                try {
-                    photoFile = File.createTempFile("photo", ".jpg", directory);
-                } catch (IOException e) {
-                    e.printStackTrace();
-                }
-                dispatchTakePictureIntent();
-            }
-        });
 
         loadTopPosts();
     }
@@ -135,6 +90,57 @@ public class HomeActivity extends AppCompatActivity {
             }
         });
     }
+
+    // on click for logout button using butterknife
+    @OnClick(R.id.btnLogout)
+    public void onLogoutClick(){
+        ParseUser.logOut();
+        ParseUser currentUser = ParseUser.getCurrentUser();
+        if (currentUser == null){Toast.makeText(this, "Successfully logged out", Toast.LENGTH_SHORT).show();}
+        // get back to login screen
+        Intent intent = new Intent(this, MainActivity.class);
+        startActivity(intent);
+        finish();
+
+    }
+
+    // on click for picture button using butterknife
+    @OnClick(R.id.btnPicture)
+    public void onPictureClick(){
+        File directory = getExternalFilesDir(Environment.DIRECTORY_PICTURES);
+        try {
+            photoFile = File.createTempFile("photo", ".jpg", directory);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        dispatchTakePictureIntent();
+    }
+
+    // on click for create post button using butterknife
+    @OnClick(R.id.btnCreate)
+    public void onCreateClick(){
+        final String description = etDescription.getText().toString();
+        final ParseUser user = ParseUser.getCurrentUser();
+
+        if (photoFile != null ){
+            final ParseFile parseFile = new ParseFile(photoFile);
+            parseFile.saveInBackground(new SaveCallback(){
+                @Override
+                public void done(ParseException e){
+                    createPost(description, parseFile, user);
+                }
+            });
+        } else {
+            Toast.makeText(HomeActivity.this, "Please take a picture", Toast.LENGTH_SHORT).show();
+        }
+    }
+
+    // on click for refresh posts button using butterknife
+    @OnClick(R.id.btnRefresh)
+    public void onRefreshClick(){
+        loadTopPosts();
+    }
+
 
     // picture intent
     private void dispatchTakePictureIntent(){

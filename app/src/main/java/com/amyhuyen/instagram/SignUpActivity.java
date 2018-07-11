@@ -5,7 +5,6 @@ import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 import android.text.TextUtils;
-import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
@@ -17,6 +16,7 @@ import com.parse.SignUpCallback;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
+import butterknife.OnClick;
 
 public class SignUpActivity extends AppCompatActivity {
 
@@ -38,44 +38,39 @@ public class SignUpActivity extends AppCompatActivity {
         // bind using butterknife
         ButterKnife.bind(this);
 
-        // set on click listener for sign up button
-        btnSignUp.setOnClickListener(new View.OnClickListener(){
-            @Override
-            public void onClick(View v){
+    }
 
-                // access text in views
-                String name = etName.getText().toString();
-                String email = etEmail.getText().toString();
-                String phone = etName.getText().toString();
-                String username = etUsername.getText().toString();
-                String password = etPassword.getText().toString();
-                String confirmPassword = etConfirmPassword.getText().toString();
+    // on click for create account button
+    @OnClick(R.id.btnSignUp)
+    public void onSignUpClick(){
+        // access text in views
+        String name = etName.getText().toString();
+        String email = etEmail.getText().toString();
+        String phone = etName.getText().toString();
+        String username = etUsername.getText().toString();
+        String password = etPassword.getText().toString();
+        String confirmPassword = etConfirmPassword.getText().toString();
 
-                // create user conditions
-                if (!TextUtils.isEmpty(name) && !TextUtils.isEmpty(email) && !TextUtils.isEmpty(username)
-                        && !TextUtils.isEmpty(password) && !TextUtils.isEmpty(confirmPassword)){
-                    if (password.equals(confirmPassword)){
-                        createUser(email, name, username, password, phone);
-                    } else{
-                        Toast.makeText(SignUpActivity.this, "Passwords do not match", Toast.LENGTH_SHORT).show();
-                    }
-                } else{
-                    Toast.makeText(SignUpActivity.this, "Please fill in all required fields", Toast.LENGTH_LONG).show();
-
-                }
+        // create user conditions
+        if (!TextUtils.isEmpty(name) && !TextUtils.isEmpty(email) && !TextUtils.isEmpty(username)
+                && !TextUtils.isEmpty(password) && !TextUtils.isEmpty(confirmPassword)){
+            if (password.equals(confirmPassword)){
+                createUser(email, name, username, password, phone);
+            } else{
+                Toast.makeText(SignUpActivity.this, "Passwords do not match", Toast.LENGTH_SHORT).show();
             }
-        });
+        } else{
+            Toast.makeText(SignUpActivity.this, "Please fill in all required fields", Toast.LENGTH_LONG).show();
 
-        // on click listener for login
-        tvLogin.setOnClickListener(new View.OnClickListener(){
-            @Override
-            public void onClick(View v){
-                Intent intent = new Intent(SignUpActivity.this, MainActivity.class);
-                startActivity(intent);
-                finish();
-            }
-        });
+        }
+    }
 
+    // on click for login text view
+    @OnClick(R.id.tvLogin)
+    public void onLoginClick(){
+        Intent intent = new Intent(SignUpActivity.this, MainActivity.class);
+        startActivity(intent);
+        finish();
     }
 
     // method to create the user on the parse server
@@ -88,6 +83,7 @@ public class SignUpActivity extends AppCompatActivity {
         user.setEmail(email);
         // Set custom properties
         user.put("handle", username);
+        if (phone != null)
         // Invoke signUpInBackground
         user.signUpInBackground(new SignUpCallback() {
             public void done(ParseException e) {

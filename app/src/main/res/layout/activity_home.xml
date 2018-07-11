@@ -25,10 +25,29 @@
     </android.support.design.widget.TextInputLayout>
 
     <Button
+        android:id="@+id/btnPicture"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_above="@id/btnCreate"
+        android:layout_marginRight="8dp"
+        android:layout_marginLeft="8dp"
+        android:layout_centerHorizontal="true"
+        android:text="Take Picture" />
+
+    <Button
+        android:id="@+id/btnLogout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_above="@id/btnPicture"
+        android:layout_marginRight="8dp"
+        android:layout_marginLeft="8dp"
+        android:layout_centerHorizontal="true"
+        android:text="Logout" />
+
+    <Button
         android:id="@+id/btnCreate"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
         android:layout_marginRight="8dp"
         android:layout_marginLeft="8dp"
         android:text="Create"
@@ -44,13 +63,7 @@
         android:text="Refresh"
         android:layout_alignParentBottom="true"/>
 
-    <Button
-        android:id="@+id/btnPicture"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_above="@id/btnCreate"
-        android:layout_centerHorizontal="true"
-        android:text="Take Picture" />
+
 
     <ImageView
         android:id="@+id/ivPhoto"
