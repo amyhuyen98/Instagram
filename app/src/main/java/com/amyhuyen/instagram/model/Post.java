@@ -28,11 +28,11 @@ public class Post extends ParseObject {
         put(KEY_IMAGE, image);
     }
 
-    // accessor and mutator for image
+    // accessor and mutator for user
     public ParseUser getUser() {
         return super.getParseUser(KEY_USER);
     }
-    public void setUser(ParseUser user){
+    public void setUser(ParseUser user) {
         put(KEY_USER, user);
     }
 

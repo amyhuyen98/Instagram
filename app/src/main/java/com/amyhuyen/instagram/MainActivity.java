@@ -54,7 +54,6 @@ public class MainActivity extends AppCompatActivity {
         signUp();
     }
 
-
     // method that logs a user in
     private void login(String username, String password){
         ParseUser.logInInBackground(username, password, new LogInCallback() {

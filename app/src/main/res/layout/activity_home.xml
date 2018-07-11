@@ -25,14 +25,14 @@
     </android.support.design.widget.TextInputLayout>
 
     <Button
-        android:id="@+id/btnPicture"
+        android:id="@+id/btnTimeline"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_above="@id/btnCreate"
         android:layout_marginRight="8dp"
         android:layout_marginLeft="8dp"
+        android:layout_above="@id/btnLogout"
         android:layout_centerHorizontal="true"
-        android:text="Take Picture" />
+        android:text="Timeline"/>
 
     <Button
         android:id="@+id/btnLogout"
@@ -43,6 +43,16 @@
         android:layout_marginLeft="8dp"
         android:layout_centerHorizontal="true"
         android:text="Logout" />
+
+    <Button
+        android:id="@+id/btnPicture"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_above="@id/btnCreate"
+        android:layout_marginRight="8dp"
+        android:layout_marginLeft="8dp"
+        android:layout_centerHorizontal="true"
+        android:text="Take Picture" />
 
     <Button
         android:id="@+id/btnCreate"

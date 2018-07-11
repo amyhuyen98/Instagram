@@ -141,6 +141,13 @@ public class HomeActivity extends AppCompatActivity {
         loadTopPosts();
     }
 
+//     on click for timeline button using butterknife
+    @OnClick(R.id.btnTimeline)
+    public void onTimelineClick(){
+        Intent intent = new Intent(HomeActivity.this, TimelineActivity.class);
+        startActivity(intent);
+    }
+
 
     // picture intent
     private void dispatchTakePictureIntent(){
