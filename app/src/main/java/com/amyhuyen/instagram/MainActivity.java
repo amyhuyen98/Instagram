@@ -25,6 +25,14 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        // check if user is already logged in
+        ParseUser user = ParseUser.getCurrentUser();
+        if (user != null){
+            Intent intent = new Intent(this, HomeActivity.class);
+            startActivity(intent);
+            finish();
+        }
+
         // bind the views using butterknife
         ButterKnife.bind(this);
     }
