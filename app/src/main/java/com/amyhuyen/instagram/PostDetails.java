@@ -7,6 +7,7 @@ import android.widget.TextView;
 
 import com.amyhuyen.instagram.model.Post;
 import com.amyhuyen.instagram.model.TimeFormatter;
+import com.bumptech.glide.load.resource.bitmap.CircleCrop;
 import com.codepath.apps.restclienttemplate.models.GlideApp;
 import com.parse.GetCallback;
 import com.parse.ParseException;
@@ -46,9 +47,18 @@ public class PostDetails extends AppCompatActivity {
                     // populate fields with information
                     tvHandle2.setText(object.getHandle());
                     tvCaption2.setText(object.getDescription());
-                    GlideApp.with(PostDetails.this)
-                            .load(object.getImage().getUrl())
-                            .into(ivImage2);
+                    if (object.getImage() != null){
+                        GlideApp.with(PostDetails.this)
+                                .load(object.getImage().getUrl())
+                                .placeholder(R.drawable.placeholder)
+                                .into(ivImage2);
+                    }
+                    if (object.getProfileImage() != null) {
+                        GlideApp.with(PostDetails.this)
+                                .load(object.getProfileImage().getUrl())
+                                .transform(new CircleCrop())
+                                .into(ivProfileImage2);
+                    }
 
                     tvTimeStamp2.setText(TimeFormatter.getTimeDifference(object.getCreatedAt().toString()));
                 } else{ e.printStackTrace(); }

@@ -13,6 +13,7 @@ public class Post extends ParseObject {
     private static final String KEY_USER = "user";
     private static final String KEY_HANDLE = "handle";
     private static final String KEY_CREATED = "createdAt";
+    private static final String KEY_PROFILE = "profilePic";
 
 
     // accessor and mutator for description
@@ -30,6 +31,9 @@ public class Post extends ParseObject {
     public void setImage(ParseFile image){
         put(KEY_IMAGE, image);
     }
+
+    // accessor and mutator for profile images
+    public ParseFile getProfileImage(){ return getUser().getParseFile(KEY_PROFILE);}
 
     // accessor and mutator for user
     public ParseUser getUser() {

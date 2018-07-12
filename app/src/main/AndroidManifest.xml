@@ -28,10 +28,6 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".HomeActivity"
-            android:label="@string/title_activity_home"
-            android:theme="@style/AppTheme.NoActionBar" />
-        <activity
             android:name=".SignUpActivity"
             android:label="SignUpActivity"
             android:theme="@style/Theme.AppCompat.NoActionBar" />
@@ -46,7 +42,6 @@
                 android:resource="@xml/fileprovider" />
         </provider>
 
-        <activity android:name=".TimelineActivity" />
         <activity android:name=".PostDetails" />
         <activity android:name=".LandingActivity" />
     </application>

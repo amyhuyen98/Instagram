@@ -94,6 +94,7 @@ public class CameraFragment extends Fragment {
 
     // method to create and save posts
     private void createPost(String description, ParseFile imageFile, ParseUser user){
+//        LandingActivity.showProgressBar();
         final Post newPost = new Post();
         newPost.setDescription(description);
         newPost.setImage(imageFile);
@@ -103,6 +104,7 @@ public class CameraFragment extends Fragment {
             @Override
             public void done(ParseException e) {
                 if (e == null){
+//                    LandingActivity.hideProgressBar();
                     Log.d("Landing Activity", "Create post success!");
                     Toast.makeText(getActivity(), "Posted", Toast.LENGTH_SHORT).show();
 
@@ -149,7 +151,4 @@ public class CameraFragment extends Fragment {
             ivPhoto.setImageBitmap(imageBitmap);
         }
     }
-
-
-
 }

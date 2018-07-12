@@ -12,6 +12,7 @@ import android.widget.TextView;
 
 import com.amyhuyen.instagram.model.Post;
 import com.amyhuyen.instagram.model.TimeFormatter;
+import com.bumptech.glide.load.resource.bitmap.CircleCrop;
 import com.codepath.apps.restclienttemplate.models.GlideApp;
 
 import java.util.List;
@@ -56,7 +57,17 @@ public class PostAdapter extends RecyclerView.Adapter<PostAdapter.ViewHolder>{
             String url = post.getImage().getUrl();
             GlideApp.with(context)
                     .load(url)
+                    .placeholder(R.drawable.placeholder)
                     .into(holder.ivImage);
+        }
+
+        // getting and displaying profile images
+        if (post.getProfileImage() != null){
+            String url = post.getProfileImage().getUrl();
+            GlideApp.with(context)
+                    .load(url)
+                    .transform(new CircleCrop())
+                    .into(holder.ivProfileImage);
         }
     }
 
