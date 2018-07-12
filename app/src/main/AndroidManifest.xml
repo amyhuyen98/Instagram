@@ -46,7 +46,9 @@
                 android:resource="@xml/fileprovider" />
         </provider>
 
-        <activity android:name=".TimelineActivity"></activity>
+        <activity android:name=".TimelineActivity" />
+        <activity android:name=".PostDetails" />
+        <activity android:name=".LandingActivity"></activity>
     </application>
 
 </manifest>

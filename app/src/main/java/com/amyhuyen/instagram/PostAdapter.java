@@ -1,6 +1,7 @@
 package com.amyhuyen.instagram;
 
 import android.content.Context;
+import android.content.Intent;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -10,6 +11,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.amyhuyen.instagram.model.Post;
+import com.amyhuyen.instagram.model.TimeFormatter;
 import com.codepath.apps.restclienttemplate.models.GlideApp;
 
 import java.util.List;
@@ -47,6 +49,7 @@ public class PostAdapter extends RecyclerView.Adapter<PostAdapter.ViewHolder>{
         // populate the views according to this data
         holder.tvCaption.setText(post.getDescription());
         holder.tvHandle.setText(post.getHandle());
+        holder.tvTimeStamp.setText(TimeFormatter.getTimeDifference(post.getCreatedAt().toString()));
 
         // getting and displaying images
         if (post.getImage() != null) {
@@ -55,25 +58,39 @@ public class PostAdapter extends RecyclerView.Adapter<PostAdapter.ViewHolder>{
                     .load(url)
                     .into(holder.ivImage);
         }
-
     }
 
     @Override
     public int getItemCount() { return mPosts.size(); }
 
-    public class ViewHolder extends RecyclerView.ViewHolder{
+    public class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
         public @BindView (R.id.tvHandle) TextView tvHandle;
         public @BindView (R.id.tvCaption) TextView tvCaption;
         public @BindView (R.id.ivProfileImage) ImageView ivProfileImage;
         public @BindView (R.id.ivImage) ImageView ivImage;
+        public @BindView (R.id.tvTimeStamp) TextView tvTimeStamp;
 
         public ViewHolder(View itemView){
             super (itemView);
-
             // bind views using butterknife
             ButterKnife.bind(this, itemView);
+            itemView.setOnClickListener(this);
         }
 
+        @Override
+        public void onClick(View view) {
+            // get item position
+            int position = getAdapterPosition();
+            // make sure the position is valid
+            if (position != RecyclerView.NO_POSITION){
+                // get the post at the position
+                Post post = mPosts.get(position);
+                //create intent for new activity
+                Intent intent = new Intent(context, PostDetails.class);
+                intent.putExtra("postId", post.getObjectId());
+                context.startActivity(intent);
+            }
+        }
     }
 
     // clean all elements of the recycler

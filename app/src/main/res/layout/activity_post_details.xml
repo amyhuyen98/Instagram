@@ -1,33 +1,34 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    tools:context=".PostDetails">
 
     <ImageView
-        android:id="@+id/ivProfileImage"
+        android:id="@+id/ivProfileImage2"
         android:layout_width="40dp"
         android:layout_height="40dp"
-        android:layout_alignStart="@id/ivImage"
+        android:layout_alignStart="@id/ivImage2"
         android:layout_margin="5dp"
-        android:layout_above="@id/ivImage"
+        android:layout_above="@id/ivImage2"
         app:srcCompat="@drawable/instagram_user"/>
 
     <TextView
-        android:id="@+id/tvHandle"
+        android:id="@+id/tvHandle2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginBottom="15dp"
         android:layout_marginLeft="5dp"
-        android:layout_toEndOf="@id/ivProfileImage"
-        android:layout_above="@id/ivImage"
-        android:layout_toRightOf="@id/ivProfileImage"
+        android:layout_toEndOf="@id/ivProfileImage2"
+        android:layout_above="@id/ivImage2"
+        android:layout_toRightOf="@id/ivProfileImage2"
         android:text="handle"/>
 
 
     <ImageView
-        android:id="@+id/ivImage"
+        android:id="@+id/ivImage2"
         android:layout_width="379dp"
         android:layout_height="368dp"
         android:layout_centerVertical="true"
@@ -42,21 +43,20 @@
         app:srcCompat="@drawable/ic_launcher_background" />
 
     <TextView
-        android:id="@+id/tvCaption"
+        android:id="@+id/tvCaption2"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@id/ivImage"
-        android:layout_alignStart="@id/ivImage"
+        android:layout_below="@id/ivImage2"
+        android:layout_alignStart="@id/ivImage2"
         android:layout_margin="5dp"
         android:text="caption"/>
 
     <TextView
-        android:id="@+id/tvTimeStamp"
+        android:id="@+id/tvTimeStamp2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@id/tvCaption"
-        android:layout_alignStart="@id/tvCaption"
+        android:layout_below="@id/tvCaption2"
+        android:layout_alignStart="@id/tvCaption2"
         android:text="timestamp"/>
-
 
 </RelativeLayout>

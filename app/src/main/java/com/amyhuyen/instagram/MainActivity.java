@@ -28,7 +28,7 @@ public class MainActivity extends AppCompatActivity {
         // check if user is already logged in
         ParseUser user = ParseUser.getCurrentUser();
         if (user != null){
-            Intent intent = new Intent(this, HomeActivity.class);
+            Intent intent = new Intent(this, LandingActivity.class);
             startActivity(intent);
             finish();
         }
@@ -63,7 +63,7 @@ public class MainActivity extends AppCompatActivity {
                     Log.d("LogInActivity", "Login successful!");
 
                     // go to home activity after successful login
-                    final Intent intent = new Intent(MainActivity.this, HomeActivity.class);
+                    final Intent intent = new Intent(MainActivity.this, LandingActivity.class);
                     startActivity(intent);
                     finish();
 

@@ -89,7 +89,7 @@ public class SignUpActivity extends AppCompatActivity {
             public void done(ParseException e) {
                 if (e == null) {
                     // Login success
-                    Intent intent = new Intent(SignUpActivity.this, HomeActivity.class);
+                    Intent intent = new Intent(SignUpActivity.this, LandingActivity.class);
                     Toast.makeText(SignUpActivity.this, "Account created", Toast.LENGTH_LONG).show();
                     startActivity(intent);
                     finish();
