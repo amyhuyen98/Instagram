@@ -113,6 +113,7 @@ public class CameraFragment extends Fragment {
                     fragmentTransaction.replace(R.id.flContainer, fragment);
                     fragmentTransaction.addToBackStack(null);
                     fragmentTransaction.commit();
+
                 } else{
                     e.printStackTrace();
                 }
@@ -135,10 +136,15 @@ public class CameraFragment extends Fragment {
     @Override
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
         if (requestCode == REQUEST_IMAGE_CAPTURE && resultCode == RESULT_OK) {
+
+            // set create post views visible
             btnCreate.setVisibility(View.VISIBLE);
             tilDescription.setVisibility(View.VISIBLE);
-            btnPicture.setVisibility(View.GONE);
             ivPhoto.setVisibility(View.VISIBLE);
+
+            // hide take photo button
+            btnPicture.setVisibility(View.GONE);
+
             Bitmap imageBitmap = BitmapFactory.decodeFile(photoFile.getAbsolutePath());
             ivPhoto.setImageBitmap(imageBitmap);
         }
