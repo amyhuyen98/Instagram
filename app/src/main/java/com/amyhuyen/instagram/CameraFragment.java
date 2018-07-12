@@ -7,7 +7,10 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.os.Environment;
 import android.provider.MediaStore;
+import android.support.design.widget.TextInputLayout;
 import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentManager;
+import android.support.v4.app.FragmentTransaction;
 import android.support.v4.content.FileProvider;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -43,6 +46,8 @@ public class CameraFragment extends Fragment {
     @BindView(R.id.btnPicture) Button btnPicture;
     @BindView(R.id.ivPhoto) ImageView ivPhoto;
     @BindView(R.id.etDescription) EditText etDescription;
+    @BindView(R.id.btnCreate) Button btnCreate;
+    @BindView(R.id.tilDescription) TextInputLayout tilDescription;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup parent, Bundle savedInstanceState){
@@ -100,12 +105,21 @@ public class CameraFragment extends Fragment {
                 if (e == null){
                     Log.d("Landing Activity", "Create post success!");
                     Toast.makeText(getActivity(), "Posted", Toast.LENGTH_SHORT).show();
+
+                    // switch to timeline fragment
+                    Fragment fragment = new TimelineFragment();
+                    FragmentManager fragmentManager = getActivity().getSupportFragmentManager();
+                    FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+                    fragmentTransaction.replace(R.id.flContainer, fragment);
+                    fragmentTransaction.addToBackStack(null);
+                    fragmentTransaction.commit();
                 } else{
                     e.printStackTrace();
                 }
             }
         });
     }
+
     // picture intent
     private void dispatchTakePictureIntent(){
         Uri uri = FileProvider.getUriForFile(getActivity(), AUTHORITY, photoFile);
@@ -121,6 +135,10 @@ public class CameraFragment extends Fragment {
     @Override
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
         if (requestCode == REQUEST_IMAGE_CAPTURE && resultCode == RESULT_OK) {
+            btnCreate.setVisibility(View.VISIBLE);
+            tilDescription.setVisibility(View.VISIBLE);
+            btnPicture.setVisibility(View.GONE);
+            ivPhoto.setVisibility(View.VISIBLE);
             Bitmap imageBitmap = BitmapFactory.decodeFile(photoFile.getAbsolutePath());
             ivPhoto.setImageBitmap(imageBitmap);
         }

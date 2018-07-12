@@ -33,27 +33,27 @@ public class LandingActivity extends AppCompatActivity {
 
         // handle the navigation selection
         bottomNavigationView.setOnNavigationItemSelectedListener(
-                new BottomNavigationView.OnNavigationItemSelectedListener() {
-                     @Override
-                     public boolean onNavigationItemSelected(@NonNull MenuItem menuItem) {
-                         Fragment selectedFragment = null;
-                         switch(menuItem.getItemId()){
-                             case R.id.action_timeline:
-                                 selectedFragment = timelineFrag;
-                                 break;
-                             case R.id.action_camera:
-                                 selectedFragment = cameraFrag;
-                                 break;
-                             case R.id.action_profile:
-                                 selectedFragment = profileFrag;
-                                 break;
-                         }
-                         FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
-                         fragmentTransaction.replace(R.id.flContainer, selectedFragment);
-                         fragmentTransaction.commit();
-                         return true;
+            new BottomNavigationView.OnNavigationItemSelectedListener() {
+                 @Override
+                 public boolean onNavigationItemSelected(@NonNull MenuItem menuItem) {
+                     Fragment selectedFragment = null;
+                     switch(menuItem.getItemId()){
+                         case R.id.action_timeline:
+                             selectedFragment = timelineFrag;
+                             break;
+                         case R.id.action_camera:
+                             selectedFragment = cameraFrag;
+                             break;
+                         case R.id.action_profile:
+                             selectedFragment = profileFrag;
+                             break;
                      }
-                 });
+                     FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+                     fragmentTransaction.replace(R.id.flContainer, selectedFragment);
+                     fragmentTransaction.commit();
+                     return true;
+                 }
+             });
         // manually displaying the first fragment (just one time for the beginning)
         FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
         fragmentTransaction.replace(R.id.flContainer, timelineFrag);

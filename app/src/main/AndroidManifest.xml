@@ -48,7 +48,7 @@
 
         <activity android:name=".TimelineActivity" />
         <activity android:name=".PostDetails" />
-        <activity android:name=".LandingActivity"></activity>
+        <activity android:name=".LandingActivity" />
     </application>
 
 </manifest>
