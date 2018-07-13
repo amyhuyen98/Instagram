@@ -1,7 +1,12 @@
 <resources>
     <string name="app_name">Instagram</string>
-    <string name="title_activity_home">HomeActivity</string>
+    <string name="username">Phone number, email, or username</string>
+    <string name="password">Password</string>
+    <string name="signUp">Don\'t have an account? Sign Up.</string>
+    <string name="forget">Forgot your login details?</string>
+    <string name="getHelp">Get help signing in.</string>
+    <string name="or">OR</string>
+    <string name="already">Already have an account?  <u>Login </u></string>
+    <string name="fb">Log in with Facebook</string>
 
-    <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>

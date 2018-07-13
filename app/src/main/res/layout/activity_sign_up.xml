@@ -2,7 +2,7 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:background="@drawable/bg_gradient"
+    android:background="@color/white"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".SignUpActivity">
@@ -13,70 +13,94 @@
         android:layout_height="wrap_content"
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="28dp"
+        android:layout_marginTop="56dp"
         app:srcCompat="@drawable/instagram_user" />
 
     <EditText
         android:id="@+id/etName"
+        android:background="@drawable/btn_border"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_margin="16dp"
         android:layout_below="@id/ivProfile"
-        android:textColor="@color/white_80_transparent"
+        android:padding="12dp"
+        android:textColorHint="@color/body_text"
+        android:textColor="@color/black_80_transparent"
+        android:textSize="14dp"
         android:hint="Name"/>
 
     <EditText
         android:id="@+id/etEmail"
+        android:background="@drawable/btn_border"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginRight="16dp"
         android:layout_marginLeft="16dp"
         android:layout_marginBottom="16dp"
         android:layout_below="@id/etName"
-        android:textColor="@color/white_80_transparent"
+        android:padding="12dp"
+        android:textColorHint="@color/body_text"
+        android:textColor="@color/black_80_transparent"
+        android:textSize="14dp"
         android:hint="Email"/>
 
     <EditText
         android:id="@+id/etPhone"
+        android:background="@drawable/btn_border"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginRight="16dp"
         android:layout_marginLeft="16dp"
         android:layout_marginBottom="16dp"
         android:layout_below="@id/etEmail"
-        android:textColor="@color/white_80_transparent"
+        android:padding="12dp"
+        android:textColorHint="@color/body_text"
+        android:textColor="@color/black_80_transparent"
+        android:textSize="14dp"
         android:hint="Phone (optional)"/>
 
     <EditText
         android:id="@+id/etUsername"
+        android:background="@drawable/btn_border"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginRight="16dp"
         android:layout_marginLeft="16dp"
         android:layout_marginBottom="16dp"
         android:layout_below="@id/etPhone"
-        android:textColor="@color/white_80_transparent"
+        android:padding="12dp"
+        android:textColorHint="@color/body_text"
+        android:textColor="@color/black_80_transparent"
+        android:textSize="14dp"
         android:hint="Username"/>
 
     <EditText
         android:id="@+id/etPassword"
+        android:background="@drawable/btn_border"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginRight="16dp"
         android:layout_marginLeft="16dp"
         android:layout_marginBottom="16dp"
         android:layout_below="@id/etUsername"
-        android:textColor="@color/white_80_transparent"
+        android:padding="12dp"
+        android:textColorHint="@color/body_text"
+        android:textColor="@color/black_80_transparent"
+        android:textSize="14dp"
         android:hint="Password"/>
 
     <EditText
         android:id="@+id/etConfirmPassword"
+        android:background="@drawable/btn_border"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginRight="16dp"
         android:layout_marginLeft="16dp"
         android:layout_below="@id/etPassword"
-        android:textColor="@color/white_80_transparent"
+        android:padding="12dp"
+        android:textColorHint="@color/body_text"
+        android:textColor="@color/black_80_transparent"
+        android:textSize="14dp"
         android:hint="Confirm Password"/>
 
 
@@ -87,8 +111,10 @@
         android:layout_below="@id/etConfirmPassword"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="10dp"
+        android:textColor="@color/grey_5"
         android:clickable="true"
-        android:text="Already have an account? Login"/>
+        android:textSize="13dp"
+        android:text="@string/already"/>
 
 
     <Button
@@ -102,6 +128,6 @@
         android:layout_marginBottom="0dp"
         android:layout_marginEnd="0dp"
         android:text="Create Account"
-        android:textColor="@color/white_80_transparent"
-        android:textAllCaps="false"/>
+        android:textAllCaps="false"
+        android:textColor="@color/black_80_transparent"/>
 </RelativeLayout>
