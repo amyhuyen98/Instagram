@@ -49,19 +49,9 @@ public class LandingActivity extends AppCompatActivity {
         final Fragment profileFrag = new ProfileFragment();
         final Fragment userFrag = new UserFragment();
 
-        // see if we're getting another user's profile page
-//        if (Parcels.unwrap(getIntent().getParcelableExtra("user")) != null){
-//            FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
-//            fragmentTransaction.addToBackStack(null);
-//            fragmentTransaction.replace(R.id.flContainer, userFrag);
-//            fragmentTransaction.commit();
-//
-//        } else{
-            // manually displaying the first fragment (just one time for the beginning)
-            FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
-            fragmentTransaction.replace(R.id.flContainer, timelineFrag);
-            fragmentTransaction.commit();
-//        }
+        FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+        fragmentTransaction.replace(R.id.flContainer, timelineFrag);
+        fragmentTransaction.commit();
 
         // handle the navigation selection
         bottomNavigationView.setOnNavigationItemSelectedListener(
@@ -69,12 +59,8 @@ public class LandingActivity extends AppCompatActivity {
                  @Override
                  public boolean onNavigationItemSelected(@NonNull MenuItem menuItem) {
                      Fragment selectedFragment = null;
-
                      // define all the possible fragment situations
                      switch(menuItem.getItemId()){
-                         case R.id.action_timeline:
-                             selectedFragment = timelineFrag;
-                             break;
                          case R.id.action_search:
                              selectedFragment = userFrag;
                              break;
@@ -83,6 +69,9 @@ public class LandingActivity extends AppCompatActivity {
                              break;
                          case R.id.action_profile:
                              selectedFragment = profileFrag;
+                             break;
+                         case R.id.action_timeline:
+                             selectedFragment = timelineFrag;
                              break;
                      }
 
@@ -103,7 +92,6 @@ public class LandingActivity extends AppCompatActivity {
         fragmentTransaction.addToBackStack(null);
         fragmentTransaction.add(R.id.flContainer, userFrag);
         fragmentTransaction.commit();
-
     }
 
     public ParseUser getNeededUser() {

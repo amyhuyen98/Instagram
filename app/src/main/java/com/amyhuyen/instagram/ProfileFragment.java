@@ -4,7 +4,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.widget.SwipeRefreshLayout;
-import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -33,7 +33,7 @@ public class ProfileFragment extends Fragment {
     @BindView(R.id.swipeContainer) SwipeRefreshLayout swipeContainer;
     List<Post> posts;
     List<Post> newPosts;
-    PostAdapter postAdapter;
+    PostAdapterGrid postAdapter;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup parent, Bundle SavedInstanceState){
@@ -50,9 +50,9 @@ public class ProfileFragment extends Fragment {
         posts = new ArrayList<>();
         newPosts = new ArrayList<>();
         // construct the adapter from this data source
-        postAdapter = new PostAdapter(posts, getActivity());
+        postAdapter = new PostAdapterGrid(posts, getActivity());
         // recyclerview setup
-        rvPosts.setLayoutManager(new LinearLayoutManager(getContext()));
+        rvPosts.setLayoutManager(new GridLayoutManager(getActivity(),3));
         // set the adapter
         rvPosts.setAdapter(postAdapter);
 

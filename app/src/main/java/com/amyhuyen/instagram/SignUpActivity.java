@@ -43,6 +43,9 @@ public class SignUpActivity extends AppCompatActivity {
     // on click for create account button
     @OnClick(R.id.btnSignUp)
     public void onSignUpClick(){
+        if (ParseUser.getCurrentUser() != null){
+            ParseUser.logOut();
+        }
         // access text in views
         String name = etName.getText().toString();
         String email = etEmail.getText().toString();

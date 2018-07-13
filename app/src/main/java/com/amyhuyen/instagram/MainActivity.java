@@ -40,6 +40,9 @@ public class MainActivity extends AppCompatActivity {
     // on click for login button using butterknife
     @OnClick(R.id.btnLogin)
     public void onLoginClick(){
+        if (ParseUser.getCurrentUser() != null){
+            ParseUser.logOut();
+        }
         // access username and password input
         final String username = etUsername.getText().toString();
         final String password = etPassword.getText().toString();
