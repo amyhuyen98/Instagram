@@ -36,7 +36,7 @@ The following **optional** features are implemented:
 
 The following **additional** features are implemented:
 
-- [ ] List anything else that you can get done to improve the app functionality!
+- List anything else that you can get done to improve the app functionality!
    - [x] User is taken to timeline after they submit a post
    - [x] Sign up page features confirm password field that prevents user from creating account in passwords differ
    - [x] User has the option to return to login screen from sign up page
