@@ -2,8 +2,11 @@ package com.amyhuyen.instagram;
 
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.Typeface;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
+import android.text.SpannableString;
+import android.text.style.StyleSpan;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -48,7 +51,13 @@ public class PostAdapter extends RecyclerView.Adapter<PostAdapter.ViewHolder>{
         // get the data according to position
         final Post post = mPosts.get(position);
         // populate the views according to this data
-        holder.tvCaption.setText(post.getDescription());
+
+        SpannableString ss1=  new SpannableString(post.getHandle() + "  ");
+        ss1.setSpan(new StyleSpan(Typeface.BOLD), 0, ss1.length(), 0);
+        holder.tvCaption.setText("");
+        holder.tvCaption.append(ss1);
+        holder.tvCaption.append(post.getDescription());
+
         holder.tvHandle.setText(post.getHandle());
         holder.tvTimeStamp.setText(TimeFormatter.getTimeDifference(post.getCreatedAt().toString()));
 

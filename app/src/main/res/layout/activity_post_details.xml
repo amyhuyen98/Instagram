@@ -49,8 +49,7 @@
         android:layout_height="wrap_content"
         android:layout_below="@id/ivImage2"
         android:layout_alignStart="@id/ivImage2"
-        android:layout_margin="5dp"
-        android:text="caption"/>
+        android:layout_margin="5dp"/>
 
     <TextView
         android:id="@+id/tvTimeStamp2"

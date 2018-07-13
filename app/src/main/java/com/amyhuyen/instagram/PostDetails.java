@@ -1,7 +1,10 @@
 package com.amyhuyen.instagram;
 
+import android.graphics.Typeface;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.text.SpannableString;
+import android.text.style.StyleSpan;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -45,6 +48,11 @@ public class PostDetails extends AppCompatActivity {
             public void done(Post object, ParseException e) {
                 if (e == null){
                     // populate fields with information
+                    SpannableString ss1=  new SpannableString(object.getHandle() + " ");
+                    ss1.setSpan(new StyleSpan(Typeface.BOLD), 0, ss1.length(), 0);
+                    tvCaption2.append(ss1);
+                    tvCaption2.append(object.getDescription());
+
                     tvHandle2.setText(object.getHandle());
                     tvCaption2.setText(object.getDescription());
                     if (object.getImage() != null){
