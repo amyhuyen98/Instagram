@@ -2,7 +2,7 @@
 
 **Instagram** is a photo sharing app using Parse as its backend.
 
-Time spent: **X** hours spent in total
+Time spent: **30** hours spent in total
 
 ## User Stories
 
@@ -27,7 +27,7 @@ The following **optional** features are implemented:
 - User Profiles:
    - [ ] Allow the logged in user to add a profile photo
    - [x] Display the profile photo with each post
-   - [ ] Tapping on a post's username or profile photo goes to that user's profile page
+   - [x] Tapping on a post's username or profile photo goes to that user's profile page
 - [ ] User can comment on a post and see all comments for each post in the post details screen.
 - [ ] User can like a post and see number of likes for each post in the post details screen.
 - [ ] Create a custom Camera View on your phone.
@@ -42,6 +42,8 @@ The following **additional** features are implemented:
    - [x] User has the option to return to login screen from sign up page
    - [x] User is unable to create account until all required fields are filled on sign up page
    - [x] Placeholder image used for image posts and user profile images
+   - [x] Tapping on a post's username or profile photo goes to that user's profile page and shows a **grid view** of the user's posts
+      - [x] Tapping on the pictures in the grid view launches into a post details screen 
 
 Please list two areas of the assignment you'd like to **discuss further with your peers** during the next class (examples include better ways to implement something, how to extend your app in certain ways, etc):
 
