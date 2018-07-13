@@ -52,9 +52,8 @@ public class PostDetails extends AppCompatActivity {
                     // populate fields with information
 
                     if (!object.getDescription().equals("")){
-                        SpannableString ss1=  new SpannableString(object.getHandle() + " ");
+                        SpannableString ss1=  new SpannableString(object.getHandle() + "  ");
                         ss1.setSpan(new StyleSpan(Typeface.BOLD), 0, ss1.length(), 0);
-                        tvCaption2.setText("");
                         tvCaption2.append(ss1);
                         tvCaption2.append(object.getDescription());
                     } else{
@@ -63,7 +62,6 @@ public class PostDetails extends AppCompatActivity {
                     }
 
                     tvHandle2.setText(object.getHandle());
-                    tvCaption2.setText(object.getDescription());
                     if (object.getImage() != null){
                         GlideApp.with(PostDetails.this)
                                 .load(object.getImage().getUrl())

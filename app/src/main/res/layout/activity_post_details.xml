@@ -27,7 +27,9 @@
         android:layout_toEndOf="@id/ivProfileImage2"
         android:layout_above="@id/ivImage2"
         android:layout_toRightOf="@id/ivProfileImage2"
-        android:text="handle"/>
+        android:text="handle"
+        android:textSize="16dp"
+        android:textColor="@color/black"/>
 
 
     <ImageView
@@ -49,7 +51,9 @@
         android:layout_height="wrap_content"
         android:layout_below="@id/ivImage2"
         android:layout_alignStart="@id/ivImage2"
-        android:layout_margin="5dp"/>
+        android:layout_margin="5dp"
+        android:textSize="16dp"
+        android:textColor="@color/black"/>
 
     <TextView
         android:id="@+id/tvTimeStamp2"
@@ -58,5 +62,8 @@
         android:layout_below="@id/tvCaption2"
         android:layout_alignStart="@id/ivImage2"
         android:layout_marginLeft="5dp"
-        android:text="timestamp"/>
+        android:text="timestamp"
+        android:textAllCaps="true"
+        android:textColor="@color/grey_5"
+        android:textSize="10dp"/>
 </RelativeLayout>

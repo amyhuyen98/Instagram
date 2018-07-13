@@ -1,13 +1,19 @@
 package com.amyhuyen.instagram;
 
+import android.content.Context;
+import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.design.widget.BottomNavigationView;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
+import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
+import android.view.LayoutInflater;
 import android.view.MenuItem;
+import android.view.View;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -15,7 +21,6 @@ import butterknife.ButterKnife;
 public class LandingActivity extends AppCompatActivity {
 
     @BindView (R.id.bottom_nav) BottomNavigationView bottomNavigationView;
-//    @BindView (R.id.miActionProgress) MenuItem miActionProgressItem;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -24,6 +29,14 @@ public class LandingActivity extends AppCompatActivity {
 
         // bind views using butterknife
         ButterKnife.bind(this);
+
+        // action bar
+        ActionBar actionBar = getSupportActionBar();
+        actionBar.setDisplayShowCustomEnabled(true);
+        actionBar.setBackgroundDrawable(new ColorDrawable(Color.parseColor("#ffffff")));
+        LayoutInflater inflater = (LayoutInflater) this .getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+        View v = inflater.inflate(R.layout.action_bar, null);
+        actionBar.setCustomView(v);
 
         final FragmentManager fragmentManager = getSupportFragmentManager();
 
@@ -65,24 +78,4 @@ public class LandingActivity extends AppCompatActivity {
         fragmentTransaction.replace(R.id.flContainer, timelineFrag);
         fragmentTransaction.commit();
     }
-//
-//    @Override
-//    public boolean onPrepareOptionsMenu(Menu menu) {
-//        // Store instance of the menu item containing progress
-//        miActionProgressItem = menu.findItem(R.id.miActionProgress);
-//        // Extract the action-view from the menu item
-//        ProgressBar v =  (ProgressBar) MenuItemCompat.getActionView(miActionProgressItem);
-//        // Return to finish
-//        return super.onPrepareOptionsMenu(menu);
-//    }
-//
-//    public void showProgressBar() {
-//        // Show progress item
-//        miActionProgressItem.setVisible(true);
-//    }
-//
-//    public void hideProgressBar() {
-//        // Hide progress item
-//        miActionProgressItem.setVisible(false);
-//    }
 }
