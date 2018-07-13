@@ -1,10 +1,15 @@
 package com.amyhuyen.instagram;
 
+import android.content.Context;
+import android.graphics.Color;
 import android.graphics.Typeface;
+import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
+import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.text.SpannableString;
 import android.text.style.StyleSpan;
+import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -18,7 +23,6 @@ import com.parse.ParseException;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
-import jp.wasabeef.glide.transformations.CropSquareTransformation;
 
 public class PostDetails extends AppCompatActivity {
 
@@ -36,6 +40,14 @@ public class PostDetails extends AppCompatActivity {
 
         // bind views
         ButterKnife.bind(this);
+
+        // action bar
+        ActionBar actionBar = getSupportActionBar();
+        actionBar.setDisplayShowCustomEnabled(true);
+        actionBar.setBackgroundDrawable(new ColorDrawable(Color.parseColor("#ffffff")));
+        LayoutInflater inflater = (LayoutInflater) this .getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+        View v = inflater.inflate(R.layout.action_bar, null);
+        actionBar.setCustomView(v);
 
         // get post objectId from intent
         getPostInfo(getIntent().getStringExtra("postId"));
@@ -65,7 +77,6 @@ public class PostDetails extends AppCompatActivity {
                     if (object.getImage() != null){
                         GlideApp.with(PostDetails.this)
                                 .load(object.getImage().getUrl())
-                                .transform(new CropSquareTransformation())
                                 .placeholder(R.drawable.placeholder)
                                 .into(ivImage2);
                     }
@@ -73,6 +84,7 @@ public class PostDetails extends AppCompatActivity {
                         GlideApp.with(PostDetails.this)
                                 .load(object.getProfileImage().getUrl())
                                 .transform(new CircleCrop())
+                                .placeholder(R.drawable.instagram_user)
                                 .into(ivProfileImage2);
                     }
 

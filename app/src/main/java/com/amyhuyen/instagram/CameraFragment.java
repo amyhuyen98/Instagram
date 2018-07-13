@@ -3,11 +3,11 @@ package com.amyhuyen.instagram;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.graphics.Matrix;
 import android.net.Uri;
 import android.os.Bundle;
 import android.os.Environment;
 import android.provider.MediaStore;
-import android.support.design.widget.TextInputLayout;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
@@ -47,7 +47,6 @@ public class CameraFragment extends Fragment {
     @BindView(R.id.ivPhoto) ImageView ivPhoto;
     @BindView(R.id.etDescription) EditText etDescription;
     @BindView(R.id.btnCreate) Button btnCreate;
-    @BindView(R.id.tilDescription) TextInputLayout tilDescription;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup parent, Bundle savedInstanceState){
@@ -141,14 +140,23 @@ public class CameraFragment extends Fragment {
 
             // set create post views visible
             btnCreate.setVisibility(View.VISIBLE);
-            tilDescription.setVisibility(View.VISIBLE);
+            etDescription.setVisibility(View.VISIBLE);
             ivPhoto.setVisibility(View.VISIBLE);
 
             // hide take photo button
             btnPicture.setVisibility(View.GONE);
 
             Bitmap imageBitmap = BitmapFactory.decodeFile(photoFile.getAbsolutePath());
-            ivPhoto.setImageBitmap(imageBitmap);
+
+            // rotate the image
+            Matrix matrix = new Matrix();
+            matrix.postRotate(90);
+            Bitmap scaledBitmap = Bitmap.createScaledBitmap(imageBitmap, imageBitmap.getWidth(), imageBitmap.getHeight(), true);
+            Bitmap rotatedBitmap = Bitmap.createBitmap(scaledBitmap, 0, 0, scaledBitmap.getWidth(), scaledBitmap.getHeight(), matrix, true);
+
+            ivPhoto.setImageBitmap(rotatedBitmap);
+
+
         }
     }
 }

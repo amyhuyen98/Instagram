@@ -22,7 +22,6 @@ import java.util.List;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
-import jp.wasabeef.glide.transformations.CropSquareTransformation;
 
 public class PostAdapter extends RecyclerView.Adapter<PostAdapter.ViewHolder>{
 
@@ -74,7 +73,6 @@ public class PostAdapter extends RecyclerView.Adapter<PostAdapter.ViewHolder>{
             GlideApp.with(context)
                     .load(url)
                     .placeholder(R.drawable.placeholder)
-                    .transform(new CropSquareTransformation())
                     .into(holder.ivImage);
         }
 
@@ -84,6 +82,7 @@ public class PostAdapter extends RecyclerView.Adapter<PostAdapter.ViewHolder>{
             GlideApp.with(context)
                     .load(url)
                     .transform(new CircleCrop())
+                    .placeholder(R.drawable.instagram_user)
                     .into(holder.ivProfileImage);
         }
     }

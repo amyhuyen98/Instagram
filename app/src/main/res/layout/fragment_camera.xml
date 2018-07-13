@@ -1,64 +1,63 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:background="@android:color/transparent"
-    tools:context=".CameraFragment">
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent" >
 
-    <ImageView
-        android:id="@+id/ivPhoto"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:scaleType="fitXY"
-        android:layout_alignParentTop="true"
-        android:layout_marginTop="16dp"
-        android:adjustViewBounds="true"
-        android:cropToPadding="true"
-        android:visibility="gone"
-        app:srcCompat="@drawable/bg_gradient" />
-
-    <android.support.design.widget.TextInputLayout
-        android:id="@+id/tilDescription"
+    <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:tools="http://schemas.android.com/tools"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_centerHorizontal="true"
-        android:layout_marginRight="16dp"
-        android:layout_marginLeft="16dp"
-        android:layout_marginTop="16dp"
-        android:visibility="gone"
-        android:layout_below="@id/ivPhoto">
+        android:layout_height="match_parent"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        android:background="@android:color/transparent"
+        tools:context=".CameraFragment">
+
+        <ImageView
+            android:id="@+id/ivPhoto"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:scaleType="fitXY"
+            android:layout_alignParentTop="true"
+            android:layout_marginTop="16dp"
+            android:adjustViewBounds="true"
+            android:cropToPadding="true"
+            android:visibility="gone"
+            app:srcCompat="@drawable/bg_gradient" />
 
         <EditText
             android:id="@+id/etDescription"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="Enter a description"
-            android:inputType="text" />
-    </android.support.design.widget.TextInputLayout>
+            android:layout_centerHorizontal="true"
+            android:layout_marginRight="16dp"
+            android:layout_marginLeft="16dp"
+            android:layout_marginTop="16dp"
+            android:visibility="gone"
+            android:layout_below="@id/ivPhoto" />
 
-    <Button
-        android:id="@+id/btnCreate"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="32dp"
-        android:layout_marginRight="8dp"
-        android:layout_marginLeft="8dp"
-        android:layout_marginBottom="60dp"
-        android:visibility="gone"
-        android:layout_below="@id/tilDescription"
-        android:text="Post"/>
+        <Button
+            android:id="@+id/btnCreate"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/etDescription"
+            android:layout_marginRight="8dp"
+            android:layout_marginLeft="8dp"
+            android:layout_marginBottom="60dp"
+            android:layout_centerHorizontal="true"
+            android:visibility="gone"
+            android:text="Post"/>
 
-    <Button
-        android:id="@+id/btnPicture"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        android:layout_marginRight="8dp"
-        android:layout_marginLeft="8dp"
-        android:layout_marginBottom="60dp"
-        android:layout_centerHorizontal="true"
-        android:text="Take Picture" />
+        <Button
+            android:id="@+id/btnPicture"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_marginRight="8dp"
+            android:layout_marginLeft="8dp"
+            android:layout_marginBottom="60dp"
+            android:layout_centerHorizontal="true"
+            android:text="Take Picture" />
 
-</RelativeLayout>
+    </RelativeLayout>
+
+</ScrollView>
