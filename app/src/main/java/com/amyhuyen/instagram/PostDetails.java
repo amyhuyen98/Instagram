@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.text.SpannableString;
 import android.text.style.StyleSpan;
+import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -17,6 +18,7 @@ import com.parse.ParseException;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
+import jp.wasabeef.glide.transformations.CropSquareTransformation;
 
 public class PostDetails extends AppCompatActivity {
 
@@ -48,16 +50,24 @@ public class PostDetails extends AppCompatActivity {
             public void done(Post object, ParseException e) {
                 if (e == null){
                     // populate fields with information
-                    SpannableString ss1=  new SpannableString(object.getHandle() + " ");
-                    ss1.setSpan(new StyleSpan(Typeface.BOLD), 0, ss1.length(), 0);
-                    tvCaption2.append(ss1);
-                    tvCaption2.append(object.getDescription());
+
+                    if (!object.getDescription().equals("")){
+                        SpannableString ss1=  new SpannableString(object.getHandle() + " ");
+                        ss1.setSpan(new StyleSpan(Typeface.BOLD), 0, ss1.length(), 0);
+                        tvCaption2.setText("");
+                        tvCaption2.append(ss1);
+                        tvCaption2.append(object.getDescription());
+                    } else{
+                        tvCaption2.setText("");
+                        tvCaption2.setVisibility(View.GONE);
+                    }
 
                     tvHandle2.setText(object.getHandle());
                     tvCaption2.setText(object.getDescription());
                     if (object.getImage() != null){
                         GlideApp.with(PostDetails.this)
                                 .load(object.getImage().getUrl())
+                                .transform(new CropSquareTransformation())
                                 .placeholder(R.drawable.placeholder)
                                 .into(ivImage2);
                     }

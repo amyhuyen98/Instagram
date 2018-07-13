@@ -22,6 +22,7 @@ import java.util.List;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
+import jp.wasabeef.glide.transformations.CropSquareTransformation;
 
 public class PostAdapter extends RecyclerView.Adapter<PostAdapter.ViewHolder>{
 
@@ -52,11 +53,17 @@ public class PostAdapter extends RecyclerView.Adapter<PostAdapter.ViewHolder>{
         final Post post = mPosts.get(position);
         // populate the views according to this data
 
-        SpannableString ss1=  new SpannableString(post.getHandle() + "  ");
-        ss1.setSpan(new StyleSpan(Typeface.BOLD), 0, ss1.length(), 0);
-        holder.tvCaption.setText("");
-        holder.tvCaption.append(ss1);
-        holder.tvCaption.append(post.getDescription());
+        if (!post.getDescription().equals("")){
+
+            SpannableString ss1=  new SpannableString(post.getHandle() + "  ");
+            ss1.setSpan(new StyleSpan(Typeface.BOLD), 0, ss1.length(), 0);
+            holder.tvCaption.setText("");
+            holder.tvCaption.append(ss1);
+            holder.tvCaption.append(post.getDescription());
+        } else{
+            holder.tvCaption.setText("");
+            holder.tvCaption.setVisibility(View.GONE);
+        }
 
         holder.tvHandle.setText(post.getHandle());
         holder.tvTimeStamp.setText(TimeFormatter.getTimeDifference(post.getCreatedAt().toString()));
@@ -67,6 +74,7 @@ public class PostAdapter extends RecyclerView.Adapter<PostAdapter.ViewHolder>{
             GlideApp.with(context)
                     .load(url)
                     .placeholder(R.drawable.placeholder)
+                    .transform(new CropSquareTransformation())
                     .into(holder.ivImage);
         }
 

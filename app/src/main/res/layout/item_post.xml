@@ -47,7 +47,7 @@
         android:id="@+id/tvCaption"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@id/ivImage"
+        android:layout_below="@id/heart"
         android:layout_alignStart="@id/ivImage"
         android:layout_margin="5dp"/>
 
@@ -56,8 +56,54 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@id/tvCaption"
-        android:layout_alignStart="@id/tvCaption"
+        android:layout_alignStart="@id/ivImage"
+        android:layout_marginLeft="5dp"
         android:text="timestamp"/>
+
+    <ImageView
+        android:id="@+id/heart"
+        android:layout_width="20dp"
+        android:layout_height="20dp"
+        android:layout_below="@id/ivImage"
+        android:layout_alignStart="@id/ivImage"
+        android:layout_marginLeft="10dp"
+        android:layout_marginTop="5dp"
+        android:layout_marginBottom="5dp"
+        app:srcCompat="@drawable/ic_heart"/>
+
+    <ImageView
+        android:id="@+id/comment"
+        android:layout_width="20dp"
+        android:layout_height="20dp"
+        android:layout_below="@id/ivImage"
+        android:layout_toRightOf="@id/heart"
+        android:layout_marginLeft="10dp"
+        android:layout_marginTop="5dp"
+        android:layout_marginBottom="5dp"
+        app:srcCompat="@drawable/ufi_comment"/>
+
+    <ImageView
+        android:id="@+id/dm"
+        android:layout_width="25dp"
+        android:layout_height="25dp"
+        android:layout_below="@id/ivImage"
+        android:layout_toRightOf="@id/comment"
+        android:layout_marginLeft="10dp"
+        android:layout_marginTop="5dp"
+        android:layout_marginBottom="5dp"
+        app:srcCompat="@drawable/ufi_new_direct"/>
+
+    <ImageView
+        android:id="@+id/save"
+        android:layout_width="20dp"
+        android:layout_height="20dp"
+        android:layout_below="@id/ivImage"
+        android:layout_alignParentEnd="true"
+        android:layout_marginRight="10dp"
+        android:layout_marginTop="5dp"
+        android:layout_marginBottom="5dp"
+        app:srcCompat="@drawable/ic_save"/>
+
 
 
 </RelativeLayout>
