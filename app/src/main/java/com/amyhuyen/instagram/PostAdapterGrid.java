@@ -17,6 +17,7 @@ import java.util.List;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
+import jp.wasabeef.glide.transformations.CropSquareTransformation;
 
 public class PostAdapterGrid extends RecyclerView.Adapter<PostAdapterGrid.ViewHolder> {
 
@@ -51,6 +52,7 @@ public class PostAdapterGrid extends RecyclerView.Adapter<PostAdapterGrid.ViewHo
             String url = post.getImage().getUrl();
             GlideApp.with(context)
                     .load(url)
+                    .transform(new CropSquareTransformation())
                     .placeholder(R.drawable.placeholder)
                     .into(holder.ivImage);
         }

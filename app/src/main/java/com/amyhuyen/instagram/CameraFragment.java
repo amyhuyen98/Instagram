@@ -142,7 +142,7 @@ public class CameraFragment extends Fragment {
 
             // rotate the image
             Matrix matrix = new Matrix();
-            matrix.postRotate(90);
+            matrix.postRotate(270);
             Bitmap scaledBitmap = Bitmap.createScaledBitmap(imageBitmap, imageBitmap.getWidth(), imageBitmap.getHeight(), true);
             Bitmap rotatedBitmap = Bitmap.createBitmap(scaledBitmap, 0, 0, scaledBitmap.getWidth(), scaledBitmap.getHeight(), matrix, true);
 
