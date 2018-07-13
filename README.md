@@ -44,6 +44,7 @@ The following **additional** features are implemented:
    - [x] Placeholder image used for image posts and user profile images
    - [x] Tapping on a post's username or profile photo goes to that user's profile page and shows a **grid view** of the user's posts
       - [x] Tapping on the pictures in the grid view launches into a post details screen 
+   - [x] User's profile tab displays posts in a grid view
 
 Please list two areas of the assignment you'd like to **discuss further with your peers** during the next class (examples include better ways to implement something, how to extend your app in certain ways, etc):
 
