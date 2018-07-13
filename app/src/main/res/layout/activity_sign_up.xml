@@ -87,6 +87,7 @@
         android:textColorHint="@color/body_text"
         android:textColor="@color/black_80_transparent"
         android:textSize="14dp"
+        android:inputType="textPassword"
         android:hint="Password"/>
 
     <EditText
@@ -101,6 +102,7 @@
         android:textColorHint="@color/body_text"
         android:textColor="@color/black_80_transparent"
         android:textSize="14dp"
+        android:inputType="textPassword"
         android:hint="Confirm Password"/>
 
 

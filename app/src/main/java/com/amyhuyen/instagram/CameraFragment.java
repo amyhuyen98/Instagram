@@ -43,7 +43,6 @@ public class CameraFragment extends Fragment {
     private File photoFile;
 
     // the views
-    @BindView(R.id.btnPicture) Button btnPicture;
     @BindView(R.id.ivPhoto) ImageView ivPhoto;
     @BindView(R.id.etDescription) EditText etDescription;
     @BindView(R.id.btnCreate) Button btnCreate;
@@ -58,11 +57,7 @@ public class CameraFragment extends Fragment {
     public void onViewCreated(View view, Bundle savedInstanceState){
         // bind the views using butterknife
         ButterKnife.bind(this, view);
-    }
 
-    // on click for picture button using butterknife
-    @OnClick(R.id.btnPicture)
-    public void onPictureClick(){
         File directory = getActivity().getExternalFilesDir(Environment.DIRECTORY_PICTURES);
         try {
             photoFile = File.createTempFile("photo", ".jpg", directory);
@@ -142,9 +137,6 @@ public class CameraFragment extends Fragment {
             btnCreate.setVisibility(View.VISIBLE);
             etDescription.setVisibility(View.VISIBLE);
             ivPhoto.setVisibility(View.VISIBLE);
-
-            // hide take photo button
-            btnPicture.setVisibility(View.GONE);
 
             Bitmap imageBitmap = BitmapFactory.decodeFile(photoFile.getAbsolutePath());
 

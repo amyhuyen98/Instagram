@@ -83,7 +83,9 @@ public class SignUpActivity extends AppCompatActivity {
         user.setEmail(email);
         // Set custom properties
         user.put("handle", username);
-        if (phone != null)
+        if (phone != null){
+            user.put("phone", phone);
+        }
         // Invoke signUpInBackground
         user.signUpInBackground(new SignUpCallback() {
             public void done(ParseException e) {

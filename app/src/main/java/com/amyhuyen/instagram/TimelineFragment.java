@@ -43,7 +43,7 @@ public class TimelineFragment extends Fragment {
         posts = new ArrayList<>();
         newPosts = new ArrayList<>();
         // construct the adapter from this data source
-        postAdapter = new PostAdapter(posts);
+        postAdapter = new PostAdapter(posts, getActivity());
         // recyclerview setup
         rvPosts.setLayoutManager(new LinearLayoutManager(getContext()));
         // set the adapter

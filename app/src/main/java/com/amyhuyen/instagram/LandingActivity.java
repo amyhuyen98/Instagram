@@ -15,12 +15,15 @@ import android.view.LayoutInflater;
 import android.view.MenuItem;
 import android.view.View;
 
+import com.parse.ParseUser;
+
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
 public class LandingActivity extends AppCompatActivity {
 
     @BindView (R.id.bottom_nav) BottomNavigationView bottomNavigationView;
+    public ParseUser neededUser;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -44,6 +47,21 @@ public class LandingActivity extends AppCompatActivity {
         final Fragment timelineFrag = new TimelineFragment();
         final Fragment cameraFrag = new CameraFragment();
         final Fragment profileFrag = new ProfileFragment();
+        final Fragment userFrag = new UserFragment();
+
+        // see if we're getting another user's profile page
+//        if (Parcels.unwrap(getIntent().getParcelableExtra("user")) != null){
+//            FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+//            fragmentTransaction.addToBackStack(null);
+//            fragmentTransaction.replace(R.id.flContainer, userFrag);
+//            fragmentTransaction.commit();
+//
+//        } else{
+            // manually displaying the first fragment (just one time for the beginning)
+            FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+            fragmentTransaction.replace(R.id.flContainer, timelineFrag);
+            fragmentTransaction.commit();
+//        }
 
         // handle the navigation selection
         bottomNavigationView.setOnNavigationItemSelectedListener(
@@ -56,6 +74,9 @@ public class LandingActivity extends AppCompatActivity {
                      switch(menuItem.getItemId()){
                          case R.id.action_timeline:
                              selectedFragment = timelineFrag;
+                             break;
+                         case R.id.action_search:
+                             selectedFragment = userFrag;
                              break;
                          case R.id.action_camera:
                              selectedFragment = cameraFrag;
@@ -72,10 +93,20 @@ public class LandingActivity extends AppCompatActivity {
                      return true;
                  }
              });
+    }
 
-        // manually displaying the first fragment (just one time for the beginning)
-        FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
-        fragmentTransaction.replace(R.id.flContainer, timelineFrag);
+    public void showDetails(ParseUser user){
+        neededUser = user;
+        bottomNavigationView.setSelectedItemId(R.id.action_search);
+        Fragment userFrag = new UserFragment();
+        FragmentTransaction fragmentTransaction = getSupportFragmentManager().beginTransaction();
+        fragmentTransaction.addToBackStack(null);
+        fragmentTransaction.add(R.id.flContainer, userFrag);
         fragmentTransaction.commit();
+
+    }
+
+    public ParseUser getNeededUser() {
+        return neededUser;
     }
 }

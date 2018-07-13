@@ -7,6 +7,13 @@
         android:icon="@drawable/home_filled"
         app:showAsAction="ifRoom"/>
 
+
+    <item
+        android:id="@+id/action_search"
+        android:enabled="true"
+        app:showAsAction="ifRoom"
+        android:icon="@drawable/search"/>
+
     <item
         android:id="@+id/action_camera"
         android:enabled="true"

@@ -47,17 +47,6 @@
             android:visibility="gone"
             android:text="Post"/>
 
-        <Button
-            android:id="@+id/btnPicture"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_alignParentBottom="true"
-            android:layout_marginRight="8dp"
-            android:layout_marginLeft="8dp"
-            android:layout_marginBottom="60dp"
-            android:layout_centerHorizontal="true"
-            android:text="Take Picture" />
-
     </RelativeLayout>
 
 </ScrollView>

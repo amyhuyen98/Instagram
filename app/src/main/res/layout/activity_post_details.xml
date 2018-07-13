@@ -29,7 +29,8 @@
         android:layout_toRightOf="@id/ivProfileImage2"
         android:text="handle"
         android:textSize="16dp"
-        android:textColor="@color/black"/>
+        android:textColor="@color/black"
+        android:textStyle="bold"/>
 
 
     <ImageView

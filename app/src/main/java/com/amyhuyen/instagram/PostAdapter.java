@@ -1,6 +1,6 @@
 package com.amyhuyen.instagram;
 
-import android.content.Context;
+import android.app.Activity;
 import android.content.Intent;
 import android.graphics.Typeface;
 import android.support.annotation.NonNull;
@@ -22,22 +22,23 @@ import java.util.List;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
+import butterknife.OnClick;
 
 public class PostAdapter extends RecyclerView.Adapter<PostAdapter.ViewHolder>{
 
     // declare variables
     private List<Post> mPosts;
-    Context context;
+    Activity context;
 
-    public PostAdapter(List<Post> posts){
+    public PostAdapter(List<Post> posts, Activity activity){
         mPosts = posts;
+        context = activity;
     }
 
     // for each row, inflate the layout and cache references into ViewHolder
     @NonNull
     @Override
     public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        context = parent.getContext();
         LayoutInflater inflater = LayoutInflater.from(context);
 
         View postView = inflater.inflate(R.layout.item_post, parent, false);
@@ -112,10 +113,25 @@ public class PostAdapter extends RecyclerView.Adapter<PostAdapter.ViewHolder>{
             if (position != RecyclerView.NO_POSITION){
                 // get the post at the position
                 Post post = mPosts.get(position);
-                //create intent for new activity
+                // create intent for new activity
                 Intent intent = new Intent(context, PostDetails.class);
                 intent.putExtra("postId", post.getObjectId());
                 context.startActivity(intent);
+            }
+        }
+        @OnClick(R.id.ivProfileImage)
+        public void onProfileImageClick(){
+            // get item position
+            int position = getAdapterPosition();
+            if (position != RecyclerView.NO_POSITION){
+                // get the post at the position
+                Post post = mPosts.get(position);
+                // create intent for new activity
+//                Intent intent = new Intent(context, LandingActivity.class);
+//                intent.putExtra("user", Parcels.wrap(post.getUser()));
+//                context.startActivity(intent);
+                ((LandingActivity) context).showDetails(post.getUser());
+
             }
         }
     }
